@@ -1,5 +1,7 @@
 <?php
 
+require_once '../SQL/SQLConnector.php';
+
 class PlayerManager {
 
     private static $_manager;
@@ -18,7 +20,7 @@ class PlayerManager {
      * @param int $id
      * @return boolean
      */
-    public static function load($player, $id) {
+    public function load($player, $id) {
         
     }
 
@@ -27,7 +29,7 @@ class PlayerManager {
      * @param Player $player
      * @return int Identifiant du joueur
      */
-    public static function save($player) {
+    public function save($player) {
         
     }
 

@@ -1,5 +1,7 @@
 <?php
 
+require_once 'PlayerManager.php';
+
 class Player {
 
     private $_id;

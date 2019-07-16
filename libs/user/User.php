@@ -1,5 +1,7 @@
 <?php
 
+require_once 'UserManager.php';
+
 class User {
 
     private $_id;
@@ -49,7 +51,7 @@ class User {
      * @return boolean
      */
     public function load($id) {
-        
+        return UserManager::getInstance()->load($this, $id);
     }
 
     /**
@@ -61,3 +63,7 @@ class User {
     }
 
 }
+
+$user = new User();
+$r = $user->load(1);
+var_dump($r);

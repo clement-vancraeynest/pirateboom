@@ -1,5 +1,7 @@
 <?php
 
+require_once 'GameManager.php';
+
 class Game {
 
     private $_id;
