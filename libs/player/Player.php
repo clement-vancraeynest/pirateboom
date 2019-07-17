@@ -74,13 +74,34 @@ class Player {
         $this->_userId = $userId;
         return $this;
     }
-    
+
+    /**
+     * Chargement du joueur
+     * @param int $id
+     * @return boolean
+     */
     public function load($id) {
-        
+        return PlayerManager::getInstance()->load($this, $id);
     }
 
+    /**
+     * Enregistrement d'un joueur
+     * @return mixed Identifiant du joueur
+     */
     public function save() {
-        
+        if (!$this->load($this->getId())) {
+            return PlayerManager::getInstance()->insert($user);
+        } else {
+            return PlayerManager::getInstance()->update($user);
+        }
+    }
+
+    /**
+     * Suppression d'un joueur
+     * @return boolean
+     */
+    public function delete() {
+        return PlayerManager::getInstance()->delete($this);
     }
 
 }

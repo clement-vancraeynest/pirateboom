@@ -59,11 +59,11 @@ class User {
      * @return int Identifiant de l'utilisateur
      */
     public function save() {
-        
+        if (!$this->load($this->getId())) {
+            return UserManager::getInstance()->insert($user);
+        } else {
+            return UserManager::getInstance()->update($user);
+        }
     }
 
 }
-
-$user = new User();
-$r = $user->load(1);
-var_dump($r);

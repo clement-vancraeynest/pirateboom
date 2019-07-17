@@ -45,12 +45,33 @@ class Game {
         return $this;
     }
 
+    /**
+     * Chargement d'une partie
+     * @param int $id
+     * @return boolean
+     */
     public function load($id) {
-        
+        return GameManager::getInstance()->load($this, $id);
     }
 
+    /**
+     * Enregistrement d'une partie
+     * @return mixed
+     */
     public function save() {
-        
+        if (!$this->load($this->getId())) {
+            return GameManager::getInstance()->insert($user);
+        } else {
+            return GameManager::getInstance()->update($user);
+        }
+    }
+
+    /**
+     * Suppression d'une partie
+     * @return boolean 
+     */
+    public function delete() {
+        return GameManager::getInstance()->delete($this);
     }
 
 }

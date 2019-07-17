@@ -4,7 +4,7 @@
         <title>Battle of Pirates</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="style/style.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
@@ -92,7 +92,7 @@
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script type="text/javascript" src="velocity.min.js"></script>
-        <script type="text/javascript" src="game.js"></script>
+        <script type="text/javascript" src="script/velocity.min.js"></script>
+        <script type="text/javascript" src="script/game.js"></script>
     </body>
 </html>

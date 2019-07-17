@@ -36,12 +36,34 @@ class UserManager {
     }
 
     /**
-     * Sauvegarde la classe 
+     * Création d'un utilisateur
      * @param User $user
-     * @return int Identifiant de l'utilisateur
+     * @return int Identifiant de l'utilisateur ou false si erreur
      */
-    public function save($user) {
-        
+    public function insert($user) {
+        $pdo = SQLConnector::getPDO();
+        $request = $pdo->prepare("INSERT INTO pb_user (name_user, email_user, password_user) VALUES (:name, :email, :password)");
+        $request->bindValue("name", $user->getName());
+        $request->bindValue("email", $user->getEmail());
+        $request->bindValue("password", $user->getPassword());
+        $result = $request->execute();
+        if (!$result) return false;
+        return $pdo->lastInsertId();
+    }
+
+    /**
+     * Enregistrement d'un utilisateur
+     * @param User $user
+     * @return boolean
+     */
+    public function update($user) {
+        $request = SQLConnector::getPDO()->prepare("UPDATE pb_user SET name_user=:name, email_user=:email, password_user=:password WHERE id_user=:id");
+        $request->bindValue("id", $user->getId());
+        $request->bindValue("name", $user->getName());
+        $request->bindValue("email", $user->getEmail());
+        $request->bindValue("password", $user->getPassword());
+        $result = $request->execute();
+        return $result;
     }
 
 }
