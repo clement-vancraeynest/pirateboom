@@ -90,4 +90,31 @@ class PlayerManager {
         return $result;
     }
 
+    /**
+     * Renvoi les joueurs de la partie
+     * @param type $gameId
+     * @return Player[]
+     */
+    public function getPlayersByGame($gameId) {
+        $request = SQLConnector::getPDO()->prepare("SELECT * FROM pb_player where idgame_player = :id");
+        $request->bindValue("id", $gameId);
+        $result = $request->execute();
+        if (!$result) return false;
+        $rows = $request->fetchAll();
+        if (count($rows) <= 0) return false;
+        $data = Array();
+        foreach ($rows as $row) {
+            $player = new Player();
+            $player->setId($row["id_player"]);
+            $player->setLife($row["life_player"]);
+            $player->setEnergy($row["energy_player"]);
+            $player->setPosition($row["position_player"]);
+            $player->setOrder($row["order_player"]);
+            $player->setGameId($row["idgame_player"]);
+            $player->setUserId($row["iduser_player"]);
+            $data[] = $player;
+        }
+        return $data;
+    }
+
 }

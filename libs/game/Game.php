@@ -1,6 +1,7 @@
 <?php
 
 require_once 'GameManager.php';
+require_once '../game/GameManager.php';
 
 class Game {
 
@@ -72,6 +73,27 @@ class Game {
      */
     public function delete() {
         return GameManager::getInstance()->delete($this);
+    }
+
+    /**
+     * Renvoi les joueurs de la game
+     * @return Player[]
+     */
+    public function getPlayers() {
+        return PlayerManager::getInstance()->getPlayersByGame($this->getId());
+    }
+
+    /**
+     * Renvoi les données brut
+     * @return Array
+     */
+    public function getRawData() {
+        $data = Array();
+        $data["id"] = $this->getId();
+        $data["board"] = $this->getBoard();
+        $data["order"] = $this->getOrder();
+        $data["state"] = $this->getState();
+        return $data;
     }
 
 }

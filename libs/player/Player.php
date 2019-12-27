@@ -104,4 +104,20 @@ class Player {
         return PlayerManager::getInstance()->delete($this);
     }
 
+    /**
+     * Renvoi les données brut
+     * @return Array
+     */
+    public function getRawData() {
+        $data = Array();
+        $data["id"] = $this->getId();
+        $data["life"] = $this->getLife();
+        $data["energy"] = $this->getEnergy();
+        $data["position"] = $this->getPosition();
+        $data["order"] = $this->getOrder();
+        $data["gameID"] = $this->getGameId();
+        $data["userId"] = $this->getUserId();
+        return $data;
+    }
+
 }
